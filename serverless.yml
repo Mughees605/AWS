@@ -1,0 +1,15 @@
+
+
+service: aws-nodejs # NOTE: update this with your service name
+
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+functions:
+  signup:
+    handler: handler.signup
+    events:
+     - http:
+         path: users/signup
+         method: post
