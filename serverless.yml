@@ -1,6 +1,6 @@
 
 
-service: aws-nodejs # NOTE: update this with your service name
+service: little-bunny # NOTE: update this with your service name
 
 
 provider:
