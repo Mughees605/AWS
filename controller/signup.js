@@ -1,5 +1,5 @@
 require('dotenv').config()
-global.fetch = require('node-fetch')
+var AWS = require('aws-sdk');
 
 function signup(event, context) {
     let { email, password } = event.body;
@@ -11,7 +11,7 @@ function signup(event, context) {
         UserPoolId: POOL_ID
     }
 
-    let userPool = new AmazonCognitoIdentity.CognitoUserPool(PoolData);
+     const userPool = new AWS.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
     
     let attributeList = [];
     
@@ -23,8 +23,8 @@ function signup(event, context) {
         Name: 'profile',
         Value: 'customer'
     };
-    let attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(name);
-    let attributeProfile = new AmazonCognitoIdentity.CognitoUserAttribute(profile);
+    let attributeName = new AWS.CognitoIdentityServiceProvider.CognitoUserAttribute('name','John Smith');
+    let attributeProfile = new AWS.CognitoIdentityServiceProvider.CognitoUserAttribute('given_name','John Smith');
 
     attributeList.push(attributeName);
     attributeList.push(attributeProfile);
