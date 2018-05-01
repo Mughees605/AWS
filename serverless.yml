@@ -5,11 +5,12 @@ service: little-bunny # NOTE: update this with your service name
 
 provider:
   name: aws
+  memorySize: 128
   runtime: nodejs6.10
 functions:
-  signup:
-    handler: handler.signup
+  register:
+    handler: handler.register
     events:
      - http:
-         path: users/signup
+         path: users/register
          method: post

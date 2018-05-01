@@ -1,4 +1,5 @@
 require('dotenv').config()
+global.fetch = require('node-fetch')
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 function signup(event, context) {

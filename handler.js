@@ -1,6 +1,6 @@
 'use strict';
 const signupUser = require('./controller/signup');
 
-module.exports.signup = (event, context, callback) => {
+module.exports.register = (event, context, callback) => {
   signupUser.signup(event, context)
 };
