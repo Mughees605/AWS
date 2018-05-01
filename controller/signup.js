@@ -1,6 +1,10 @@
 require('dotenv').config()
 var AWS = require('aws-sdk');
-var { CognitoUserPool } = require("amazon-cognito-identity-js")
+var CognitoSDK = require('amazon-cognito-identity-js-node');
+AWS.CognitoIdentityServiceProvider.AuthenticationDetails = CognitoSDK.AuthenticationDetails;
+AWS.CognitoIdentityServiceProvider.CognitoUserPool = CognitoSDK.CognitoUserPool;
+AWS.CognitoIdentityServiceProvider.CognitoUser = CognitoSDK.CognitoUser;
+AWS.CognitoIdentityServiceProvider.CognitoUserAttribute = CognitoSDK.CognitoUserAttribute
 
 function signup(event, context) {
     let { email, password } = event.body;
@@ -12,7 +16,7 @@ function signup(event, context) {
         ClientId: '44m58sdc3bsfqdaqphhlgj9qar'
     };
 
-    const userPool = new CognitoUserPool(poolData);
+    const userPool = new AWS.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
 
     let attributeList = [];
 
