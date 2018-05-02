@@ -1,5 +1,6 @@
 require('dotenv').config()
 var AWS = require('aws-sdk');
+var { Cognito } = require('amazon-cognito-identity-js') 
 var CognitoSDK = require('amazon-cognito-identity-js-node');
 AWS.CognitoIdentityServiceProvider.AuthenticationDetails = CognitoSDK.AuthenticationDetails;
 AWS.CognitoIdentityServiceProvider.CognitoUserPool = CognitoSDK.CognitoUserPool;
